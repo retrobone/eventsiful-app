@@ -1,2 +1,2 @@
-# eventfull-app
+# eventsiful-app
 Event Registration System
