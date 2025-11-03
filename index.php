@@ -1,7 +1,5 @@
 <?php
-// 1. Include header
 include 'include/header.php';
-// 2. Include database connection
 include 'include/db_connect.php';
 ?>
 
@@ -15,7 +13,6 @@ include 'include/db_connect.php';
     <div class="event-grid">
 
         <?php
-        // 3. Fetch upcoming events (NOW INCLUDES image_url)
         $sql_upcoming = "SELECT id, title, description, date, location, organizer, image_url 
                          FROM events 
                          WHERE date >= NOW() 
@@ -26,12 +23,8 @@ include 'include/db_connect.php';
             $result_upcoming = mysqli_query($conn, $sql_upcoming);
         }
 
-        // 4. Loop and display upcoming events
         if ($result_upcoming && mysqli_num_rows($result_upcoming) > 0) :
             while ($event = mysqli_fetch_assoc($result_upcoming)) :
-                
-                // --- NEW IMAGE LOGIC ---
-                // Use the scraped image if it exists, otherwise use the placeholder
                 $image_source = $event['image_url'] 
                                 ? htmlspecialchars($event['image_url']) 
                                 : 'https://picsum.photos/400/200?random=' . $event['id'];
@@ -66,7 +59,6 @@ include 'include/db_connect.php';
     <div class="event-grid">
 
         <?php
-        // 5. Fetch past events (NOW INCLUDES image_url)
         $sql_past = "SELECT id, title, description, date, location, organizer, image_url 
                      FROM events 
                      WHERE date < NOW() 
@@ -77,11 +69,8 @@ include 'include/db_connect.php';
             $result_past = mysqli_query($conn, $sql_past);
         }
 
-        // 6. Loop and display past events
         if ($result_past && mysqli_num_rows($result_past) > 0) :
             while ($event = mysqli_fetch_assoc($result_past)) :
-            
-                // --- NEW IMAGE LOGIC ---
                 $image_source = $event['image_url'] 
                                 ? htmlspecialchars($event['image_url']) 
                                 : 'https://picsum.photos/400/200?random=' . $event['id'];
@@ -111,10 +100,12 @@ include 'include/db_connect.php';
         endif;
         ?>
 
-    </div> </div> <?php
-// 7. Close connection and include footer
-if ($conn) {
+    </div> 
+</div>
+ 
+<?php
+    if ($conn) {
     mysqli_close($conn);
-}
-include 'include/footer.php';
+    }
+    include 'include/footer.php';
 ?>

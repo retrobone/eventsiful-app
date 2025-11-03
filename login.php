@@ -1,16 +1,13 @@
 <?php
-// --- 1. START SESSION & INCLUDE DATABASE ---
 session_start(); 
-include 'include/db_connect.php'; // Make sure this path is correct
+include 'include/db_connect.php';
 
-$message = ''; // To store success or error messages
+$message = '';
 
-// --- 2. HANDLE FORM SUBMISSION (WHEN USER CLICKS "LOGIN") ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Use prepared statements to prevent SQL injection
     $sql = "SELECT id, name, password, role FROM users WHERE email = ?";
     
     if ($stmt = mysqli_prepare($conn, $sql)) {
@@ -21,23 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mysqli_num_rows($result) == 1) {
             $user = mysqli_fetch_assoc($result);
             
-            // Verify the hashed password
             if (password_verify($password, $user['password'])) {
-                // --- SUCCESS! ---
-                // Store user data in the session
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_role'] = $user['role'];
                 
-                // Redirect to the homepage
                 header("Location: index.php"); 
                 exit();
             } else {
-                // --- WRONG PASSWORD ---
                 $message = '<div class="message error">Invalid password. Please try again.</div>';
             }
         } else {
-            // --- NO USER FOUND ---
             $message = '<div class="message error">No user found with that email.</div>';
         }
         mysqli_stmt_close($stmt);
@@ -53,7 +44,7 @@ include 'include/header.php';
 <div class="form-container">
     <h2>Login to Your Account</h2>
     
-    <?php echo $message; // Display any error messages here ?>
+    <?php echo $message;?>
     
     <form action="login.php" method="POST">
         <div class="form-group">

@@ -1,24 +1,19 @@
 <?php
-// 1. Include header (which also starts the session)
 include 'include/header.php';
-// 2. Include database connection
 include 'include/db_connect.php';
 
 $event = null;
 $event_id = 0;
 
-// 3. Get the Event ID from the URL
-// We use (int) to make sure it's a number, which helps prevent SQL injection
 if (isset($_GET['id'])) {
     $event_id = (int)$_GET['id'];
 }
 
 if ($event_id > 0) {
-    // 4. Fetch the specific event securely using prepared statements
     $sql = "SELECT title, description, date, location, organizer FROM events WHERE id = ?";
     
     if ($stmt = mysqli_prepare($conn, $sql)) {
-        mysqli_stmt_bind_param($stmt, "i", $event_id); // "i" means integer
+        mysqli_stmt_bind_param($stmt, "i", $event_id);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         
@@ -33,7 +28,7 @@ if ($event_id > 0) {
 
 <div class="event-section">
     
-    <?php if ($event): // Check if we successfully found an event ?>
+    <?php if ($event):?>
 
         <div class="details-container">
             
@@ -67,7 +62,7 @@ if ($event_id > 0) {
 
         </div>
 
-    <?php else: // This runs if no event was found (e.g., bad ID) ?>
+    <?php else:?>
         
         <div class="details-container">
             <h1>Event Not Found</h1>
@@ -80,6 +75,5 @@ if ($event_id > 0) {
 </div>
 
 <?php
-// 5. Include the footer
 include 'include/footer.php';
 ?>
