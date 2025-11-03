@@ -28,14 +28,15 @@ if (session_status() === PHP_SESSION_NONE) {
         <nav class="main-nav">
             <?php if (isset($_SESSION['user_id'])) : ?>
                 <span class="welcome-user">Hi, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</span>
-                <a href="/event-registration-system/my_registrations.php" class="buttonheader"><i class="fa-solid fa-calendar-check"></i> My Registrations</a>
-                <a href="/event-registration-system/logout.php" class="buttonheader"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                <a href="/my_registrations.php" class="buttonheader"><i class="fa-solid fa-calendar-check"></i> My Registrations</a>
+                <a href="/logout.php" class="buttonheader"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
             <?php else : ?>
-                <a href="/event-registration-system/login.php" class="buttonheader"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                <a href="/event-registration-system/register.php" class="buttonheader"><i class="fa-solid fa-user-plus"></i> Register</a>
+                <a href="/login.php" class="buttonheader"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                <a href="/register.php" class="buttonheader"><i class="fa-solid fa-user-plus"></i> Register</a>
             <?php endif; ?>
         </nav>
     </header>
     
 
     <main class="main">
+
