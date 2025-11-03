@@ -1,9 +1,9 @@
 <?php
 // Database credentials
-define('DB_HOST', 'localhost'); // Your database host (usually 'localhost')
-define('DB_USER', 'root'); // Your database username
-define('DB_PASS', ''); // Your database password
-define('DB_NAME', 'events_db');     // Your database name
+define('DB_HOST', 'db.fr-pari1.bengt.wasmernet.com'); // Your database host (usually 'localhost')
+define('DB_USER', '8ebb03ba7ae6800041ce946d9a2b'); // Your database username
+define('DB_PASS', '06908ebb-03ba-7cc5-8000-975f8cb31386'); // Your database password
+define('DB_NAME', 'events');     // Your database name
 
 // Create a database connection
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -16,4 +16,5 @@ if (!$conn) {
 
 // Set the character set to utf8 (good practice)
 mysqli_set_charset($conn, "utf8");
+
 ?>
