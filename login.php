@@ -60,9 +60,10 @@ include 'include/header.php';
         <button type="submit" class="btn-submit">Login</button>
         
         <p style="text-align: center; margin-top: 1rem;">
-            Don't have an account? <a href="/event-registration-system/register.php">Register here</a>
+            Don't have an account? <a href="/register.php">Register here</a>
         </p>
     </form>
 </div>
+
 
 <?php include 'include/footer.php'; ?>
