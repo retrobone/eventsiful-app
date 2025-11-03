@@ -1,0 +1,18 @@
+kind: wasmer.io/App.v0
+name: eventsiful
+owner: retrobone
+
+# --- THIS IS YOUR PHP APP ---
+package: sha256:bc5535c32c5bc14554fc5fb193a7ddab581a7d1abebe03a592a2fddcbae80cab
+scaling:
+  mode: single_concurrency
+
+# --- ADD THIS ENTIRE SECTION TO CREATE YOUR DATABASE ---
+services:
+  - name: mysql-db   # <-- This will be your DB_HOST
+    image: mysql:8.0
+    env:
+      MYSQL_DATABASE: events_db  # <-- This is your DB_NAME
+      MYSQL_USER: user           # <-- This is your DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD   # <-- Password from Wasmer Secrets
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASSWORD # Root password from Secrets
