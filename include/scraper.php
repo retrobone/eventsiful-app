@@ -108,6 +108,7 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 
 echo "<h3>Scraping complete! Added $added_count new events.</h3>";
-echo '<a href="../index.php">Go back to homepage to see them!</a>'; 
+echo '<a href="/index.php">Go back to homepage to see them!</a>'; 
+
 
 ?>
