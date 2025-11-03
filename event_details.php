@@ -55,7 +55,7 @@ if ($event_id > 0) {
                 <?php else: ?>
                     
                     <p>You must be logged in to register for this event.</p>
-                    <a href="/event-registration-system/login.php" class="btn-submit">Login to Register</a>
+                    <a href="/login.php" class="btn-submit">Login to Register</a>
                     
                 <?php endif; ?>
             </div>
@@ -76,4 +76,5 @@ if ($event_id > 0) {
 
 <?php
 include 'include/footer.php';
+
 ?>
