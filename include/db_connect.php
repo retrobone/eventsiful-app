@@ -1,7 +1,7 @@
 <?php
 // Database credentials
 define('DB_HOST', 'mysql-db'); // Your database host (usually 'localhost')
-define('DB_USER', 'hi10berg'); // Your database username
+define('DB_USER', 'hi10'); // Your database username
 define('DB_PASS', 'smple1'); // Your database password
 define('DB_NAME', 'events');     // Your database name
 
@@ -18,6 +18,7 @@ if (!$conn) {
 mysqli_set_charset($conn, "utf8");
 
 ?>
+
 
 
 
