@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <header class="header">
         <div class="header-left">
-            <a href="/event-registration-system/index.php">
+            <a href="/index.php">
                 <p class="sitename">Eventsiful</p>
             </a>
         </div>
@@ -39,4 +39,5 @@ if (session_status() === PHP_SESSION_NONE) {
     
 
     <main class="main">
+
 
