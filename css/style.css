@@ -58,9 +58,16 @@ body {
 }
 
 .hero {
-  background-color: #1a1a1a;
   text-align: center;
-  padding: 60px 20px;
+  background-image: linear-gradient(
+      rgba(18, 18, 18, 0.8),
+      rgba(18, 18, 18, 0.8)
+    ),
+    url("https://images.unsplash.com/photo-1505373877841-8c25f7d46678");
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .hero h1 {
@@ -71,7 +78,7 @@ body {
 
 .hero p {
   font-size: 18px;
-  color: #aaa;
+  color: #eaeaea;
 }
 
 .event-section {
@@ -92,13 +99,22 @@ body {
   margin: 0 auto;
 }
 
+.event-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
 .event-card {
   background-color: #1f2a44;
   border: 1px solid #333;
   border-radius: 8px;
-  padding: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s, box-shadow 0.3s;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .event-card:hover {
@@ -106,20 +122,27 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.event-card h3 {
+.event-card-content {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card-content h3 {
   margin-top: 0;
   margin-bottom: 20px;
   color: #4a90e2;
 }
 
-.event-card .event-info {
+.event-card-content .event-info {
   margin: 5px 0;
   color: #ccc;
 }
 
-.btn-details {
+.event-card-content .btn-details {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: auto;
   background-color: #4a90e2;
   color: #1f2a44;
   font-weight: 600;
@@ -129,7 +152,7 @@ body {
   transition: background-color 0.3s;
 }
 
-.btn-details:hover {
+.event-card-content .btn-details:hover {
   background-color: #63a4ff;
 }
 
@@ -197,18 +220,23 @@ body {
 }
 
 .message {
-  padding: 15px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
   text-align: center;
 }
-.success {
-  background-color: #28a745;
-  color: white;
+
+.message.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
-.error {
-  background-color: #dc3545;
-  color: white;
+
+.message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
 .welcome-user {
@@ -223,4 +251,123 @@ body {
   display: block;
   margin-top: 5px;
   min-height: 1em;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+.hamburger-bar {
+  width: 2rem;
+  height: 0.25rem;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 60%;
+    background-color: #1f2a44;
+    padding-top: 3.5rem;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .main-nav.is-active {
+    display: flex;
+  }
+
+  .main-nav .buttonheader {
+    margin-bottom: 2rem;
+    width: 80%;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+.details-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #1f2a44;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.details-container h1 {
+  color: #4a90e2;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.event-meta {
+  background-color: #121212;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #333;
+}
+
+.event-meta p {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin: 0.5rem 0;
+}
+
+.event-description h2 {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 0.5rem;
+}
+
+.event-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #eaeaea;
+}
+
+.registration-box {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+  text-align: center;
+}
+
+.registration-box p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.registration-box .btn-submit {
+  width: auto;
+  padding: 12px 30px;
 }
